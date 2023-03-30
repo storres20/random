@@ -1,0 +1,53 @@
+/* container */
+.contain {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.center > p {
+  text-align: center;
+  margin: 0
+}
+
+.firstp {
+  color: gray;
+  font-size: 1.5rem;
+  padding-top: 20px;
+}
+
+.secondp {
+  color: black;
+  font-size: 3rem;
+}
+
+.picture {
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+/* react - icons */
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.icon {
+  color: gray;
+}
+
+.icon:hover {
+  color: green;
+}
