@@ -1,7 +1,14 @@
-import React from 'react'
+import { Home } from './Home'
 
 export const Users = () => {
   return (
-    <div>Users - display a list of users from that nationality</div>
+    <div>
+      <h2>Users by nationality</h2>
+      
+      <Home/>
+      <Home/>
+      <Home/>
+      
+    </div>
   )
 }
