@@ -38,11 +38,11 @@ export const Nationalities = () => {
   
   return (
     <div>
-      <h2>Please select a Nationality</h2>
+      <h2 className={styles.title}>Please select a Nationality</h2>
       
       {
         data && data.map((item, index) => (
-          <Link to={`/users/nationality/${item.nat}`} key={index}><p className={styles.link}>{item.nat}</p></Link>
+          <Link to={`/users/nationality/${item.nat}`} key={index} className='text-center'><p className={styles.link}>{item.nat}</p></Link>
         ))
       }
     
