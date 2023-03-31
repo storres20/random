@@ -11,6 +11,8 @@ import { Data, State } from '../interfaces'
 
 import styles from './Home.module.css'
 
+import { useParams } from "react-router-dom";
+
 export const Home = () => {
   const init = {
     isPass: false,
@@ -30,26 +32,38 @@ export const Home = () => {
     isUser: false,
   }
   
+  const params = useParams<{ id: string }>();
+  console.log(params.id)
+  
+  
 
   /* Set useState */
-  const [data, setData] = useState<Data | null>(null);
+  const [data, setData] = useState<Data[]>([]);
   const [error, setError] = useState(null);
   
   /* hover icon */
   const [state, setState] = useState<State>(init)
   
   useEffect(() => {
-    axios.get('https://randomuser.me/api')
+    let url = 'https://randomuser.me/api';
+
+    if (params.id) {
+      url = 'https://randomuser.me/api/?nat='+ params.id;
+    } else {
+      url = 'https://randomuser.me/api';
+    }
+    
+    axios.get(url)
       .then(response => {
-        console.log(response.data.results[0])
-        setData(response.data.results[0]);
+        console.log(response.data.results)
+        setData(response.data.results);
         setError(null);
       })
       .catch(error => {
         setError(error.message);
-        setData(null);
+        setData([]);
       });
-  }, []);
+  }, [params.id]);
   
   const handleMouseOver = (type: keyof State) => () => {
     setState({
@@ -70,54 +84,57 @@ export const Home = () => {
     <div className={styles.contain}>
       {error && <div>{error}</div>}
       
-      
-      {data && (
-        <div className={styles.center}>
-          <img src={data.picture.large} alt="pic" className={styles.picture} />
-          
-          {state.isPass && 
-            <div className={styles.center}>
-              <p className={styles.firstp}>My password is</p>
-              <p className={styles.secondp}>{data.login.password}</p>
-            </div>
-          }
-          
-          {state.isPhone && 
+      {
+        data && data.map(item => (
           <div className={styles.center}>
-            <p className={styles.firstp}>My phone number is</p>
-            <p className={styles.secondp}>{data.cell}</p>
-          </div>
-          }
-          
-          {state.isMap && 
+            <img src={item.picture.large} alt="pic" className={styles.picture} />
+            
+            {state.isPass && 
+              <div className={styles.center}>
+                <p className={styles.firstp}>My password is</p>
+                <p className={styles.secondp}>{item.login.password}</p>
+              </div>
+            }
+            
+            {state.isPhone && 
             <div className={styles.center}>
-              <p className={styles.firstp}>My address is</p>
-              <p className={styles.secondp}>{data.location.street.number} {data.location.street.name}</p>
+              <p className={styles.firstp}>My phone number is</p>
+              <p className={styles.secondp}>{item.cell}</p>
             </div>
-          }
-  
-          {state.isCalendar && 
-            <div className={styles.center}>
-              <p className={styles.firstp}>My birthday is</p>
-              <p className={styles.secondp}>{new Date(data.dob.date).toLocaleDateString('en-GB')}</p>
-            </div>
-          }
-          
-          {state.isEmail && 
-            <div className={styles.center}>
-              <p className={styles.firstp}>My email address is</p>
-              <p className={styles.secondp}>{data.email}</p>
-            </div>
-          }
-          
-          {state.isUser && 
-            <div className={styles.center}>
-              <p className={styles.firstp}>Hi, My name is</p>
-              <p className={styles.secondp}>{data.name.first} {data.name.last}</p>
-            </div>
-          }
+            }
+            
+            {state.isMap && 
+              <div className={styles.center}>
+                <p className={styles.firstp}>My address is</p>
+                <p className={styles.secondp}>{item.location.street.number} {item.location.street.name}, {item.location.country}</p>
+              </div>
+            }
+    
+            {state.isCalendar && 
+              <div className={styles.center}>
+                <p className={styles.firstp}>My birthday is</p>
+                <p className={styles.secondp}>{new Date(item.dob.date).toLocaleDateString('en-GB')}</p>
+              </div>
+            }
+            
+            {state.isEmail && 
+              <div className={styles.center}>
+                <p className={styles.firstp}>My email address is</p>
+                <p className={styles.secondp}>{item.email}</p>
+              </div>
+            }
+            
+            {state.isUser && 
+              <div className={styles.center}>
+                <p className={styles.firstp}>Hi, My name is</p>
+                <p className={styles.secondp}>{item.name.first} {item.name.last}</p>
+              </div>
+            }
+            
+            
         </div>
-      )}
+        ))
+      }
       
       <div className={styles.iconContainer}>
         <FaUserAlt size={30} onMouseOver={handleMouseOver('isUser')} className={styles.icon} />

@@ -4,6 +4,9 @@
   justify-content: center;
   flex-direction: column;
   padding: 20px 0;
+  border: 2px solid black;
+  margin: 10px 10%;
+  
 }
 
 .center {
@@ -11,11 +14,13 @@
   justify-content: center;
   flex-direction: column;
   margin: 0 auto;
+  
 }
 
 .center > p {
   text-align: center;
-  margin: 0
+  margin: 0;
+  
 }
 
 .firstp {
@@ -42,6 +47,7 @@
   justify-content: center;
   gap: 20px;
   margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .icon {
