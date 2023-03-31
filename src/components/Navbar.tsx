@@ -12,7 +12,6 @@ export const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
               <NavLink className="nav-link" to="/users">Nationalities</NavLink>
-              <NavLink className="nav-link" to="/users/nationality">Users</NavLink>
             </div>
           </div>
         </div>
