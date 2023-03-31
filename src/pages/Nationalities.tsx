@@ -17,7 +17,6 @@ export const Nationalities = () => {
   useEffect(() => {
     axios.get('https://randomuser.me/api/?inc=nat&results=3')
       .then(response => {
-        console.log(response.data.results)
         setData(response.data.results);
         setError(null);
       })
@@ -28,13 +27,22 @@ export const Nationalities = () => {
   }, []);
 
 
+  /* Previous message before retrieve data from API */
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+  
   return (
     <div>
       <h2>Please select a Nationality</h2>
       
       {
         data && data.map((item, index) => (
-          <Link to={`/users/nationality/${item.nat}`}><p key={index} className={styles.link}>{item.nat}</p></Link>
+          <Link to={`/users/nationality/${item.nat}`} key={index}><p className={styles.link}>{item.nat}</p></Link>
         ))
       }
     

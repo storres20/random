@@ -33,8 +33,6 @@ export const Home = () => {
   }
   
   const params = useParams<{ id: string }>();
-  console.log(params.id)
-  
   
 
   /* Set useState */
@@ -45,9 +43,11 @@ export const Home = () => {
   const [state, setState] = useState<State>(init)
   
   useEffect(() => {
+    /* Set URL value for HOME page */
     let url = 'https://randomuser.me/api';
 
     if (params.id) {
+      /* Ser URL value for USERS page */
       url = 'https://randomuser.me/api/?nat='+ params.id;
     } else {
       url = 'https://randomuser.me/api';
@@ -55,7 +55,6 @@ export const Home = () => {
     
     axios.get(url)
       .then(response => {
-        console.log(response.data.results)
         setData(response.data.results);
         setError(null);
       })
@@ -72,6 +71,8 @@ export const Home = () => {
     });
   };
   
+  
+  /* Previous message before retrieve data from API */
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -85,8 +86,8 @@ export const Home = () => {
       {error && <div>{error}</div>}
       
       {
-        data && data.map(item => (
-          <div className={styles.center}>
+        data && data.map((item, index) => (
+          <div className={styles.center} key={index}>
             <img src={item.picture.large} alt="pic" className={styles.picture} />
             
             {state.isPass && 
@@ -136,6 +137,7 @@ export const Home = () => {
         ))
       }
       
+      {/* Icons */}
       <div className={styles.iconContainer}>
         <FaUserAlt size={30} onMouseOver={handleMouseOver('isUser')} className={styles.icon} />
         <TfiEmail size={30} onMouseOver={handleMouseOver('isEmail')} className={styles.icon} />
