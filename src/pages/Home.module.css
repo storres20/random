@@ -1,60 +1,133 @@
-/* container */
-.contain {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px 0;
-  border: 2px solid black;
-  border-radius: 20px;
-  margin: 10px 20%;
+/* Mobile View */
+@media only screen and (max-device-width: 480px) {
+  /* container */
+  .contain {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
+    border: none;
+    border-radius: 20px;
+    margin: 20px 20px;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(253,45,45,1) 75%);
+  }
   
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin: 0 auto;
+  .center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    
+  }
   
-}
-
-.center > p {
-  text-align: center;
-  margin: 0;
+  .center > p {
+    text-align: center;
+    margin: 0;
+    
+  }
   
+  .firstp {
+    color: gray;
+    font-size: 1.5rem;
+    padding-top: 20px;
+  }
+  
+  .secondp {
+    color: black;
+    font-size: 1rem;
+  }
+  
+  .picture {
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+  
+  /* react - icons */
+  .iconContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .icon {
+    color: gray;
+    transition: transform 1s;
+  }
+  
+  .icon:hover {
+    color: rgba(253,45,45,1);
+    transform: rotate(360deg);
+  }
 }
 
-.firstp {
-  color: gray;
-  font-size: 1.5rem;
-  padding-top: 20px;
-}
-
-.secondp {
-  color: black;
-  font-size: 3rem;
-}
-
-.picture {
-  width: 200px;
-  height: auto;
-  margin: 0 auto;
-  border-radius: 50%;
-}
-
-/* react - icons */
-.iconContainer {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-
-.icon {
-  color: gray;
-}
-
-.icon:hover {
-  color: green;
+/* Desktop View */
+@media only screen and (min-device-width: 480px) {
+  /* container */
+  .contain {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
+    border: none;
+    border-radius: 20px;
+    margin: 30px 15%;
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(253,45,45,1) 100%);
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    
+  }
+  
+  .center > p {
+    text-align: center;
+    margin: 0;
+    
+  }
+  
+  .firstp {
+    color: gray;
+    font-size: 1.5rem;
+    padding-top: 20px;
+  }
+  
+  .secondp {
+    color: black;
+    font-size: 2.5rem;
+  }
+  
+  .picture {
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+  
+  /* react - icons */
+  .iconContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .icon {
+    color: gray;
+    transition: transform 1s;
+  }
+  
+  .icon:hover {
+    color: rgba(253,45,45,1);
+    transform: rotate(360deg);
+  }
 }

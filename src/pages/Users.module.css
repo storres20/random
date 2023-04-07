@@ -1,6 +1,19 @@
-.title {
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 30px;
-  color: darkblue;
+/* Mobile View */
+@media only screen and (max-device-width: 480px) {
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: darkred;
+  }
+}
+
+/* Desktop View */
+@media only screen and (min-device-width: 480px) {
+  .title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: darkred;
+  }
 }

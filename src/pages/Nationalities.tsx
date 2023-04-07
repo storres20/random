@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import styles from './Nationalities.module.css'
+import { FaMapMarkedAlt } from 'react-icons/fa';
 
 export const Nationalities = () => {
 
@@ -40,11 +41,15 @@ export const Nationalities = () => {
     <div>
       <h2 className={styles.title}>Please select a Nationality</h2>
       
+      <div className={styles.natDiv}>
       {
         data && data.map((item, index) => (
-          <Link to={`/users/nationality/${item.nat}`} key={index} className='text-center'><p className={styles.link}>{item.nat}</p></Link>
+          <Link to={`/users/nationality/${item.nat}`} key={index}>
+            <span className={styles.link}><FaMapMarkedAlt size={30} /> {item.nat}</span>
+          </Link>
         ))
       }
+      </div>
     
     </div>
     
