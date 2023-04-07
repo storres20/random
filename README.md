@@ -23,6 +23,9 @@
 This is a frontend web application based on Reactjs + Typescript that retrieves data from API.
 Shows on screen Random user's information
 
+![imagen](https://user-images.githubusercontent.com/81504385/230554001-9b4fdbdf-0af2-4091-864b-12e1f81c4bd9.png)
+
+
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
